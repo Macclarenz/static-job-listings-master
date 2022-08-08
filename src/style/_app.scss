@@ -1,0 +1,82 @@
+@use './abstract/' as abs;
+@use './components/jobListItem';
+
+body {
+    * {
+        font-family: abs.$league-spartan;
+        font-size: abs.$body-font;
+    }
+}
+
+header, main {
+    width: 100%;
+}
+
+header {
+    background-image: url('../assets/images/bg-header-mobile.svg');
+    background-color: abs.$Desaturated-Dark-Cyan;
+    min-height: 20vh;
+}
+
+.filter-container {
+    @include abs.centerElement(min(90%, 1200px));
+    @include abs.flex(space-between, center, row, nowrap, 1em);
+    @include abs.shadow(abs.$Desaturated-Dark-Cyan);
+    background-color: abs.$Light-Grayish-Cyan-background;
+    border-radius: .25em;
+    padding: 1.5em;
+    position: relative;
+    top: -13vh;
+
+    animation: open-fade 300ms ease;
+
+    @keyframes open-fade {
+        from {
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: top;
+        } to {
+            opacity: 1;
+            transform: scaleY(1);
+            transform-origin: top;
+        }
+    }
+
+    &[empty] {
+        display: none;
+    }
+
+    #filterClearBtn {
+        @include abs.resetInput(pointer);
+        color: abs.$Dark-Grayish-Cyan;
+        font-weight: abs.$ls-bold;
+        padding: .5em;
+        transition: all 300ms ease;
+
+        &:hover {
+            color: abs.$Desaturated-Dark-Cyan;
+            text-decoration: underline
+        }
+    }
+}
+
+.filter-list {
+    @include abs.flex(flex-start, center, row, wrap, 1em);
+    flex-basis: 80%;
+    list-style: none;
+}
+
+main {
+    background-color: abs.$Light-Grayish-Cyan-filter-tablets;
+    min-height: 80vh;
+    padding-block: 3.5em 5em;
+
+    .filter-container[empty] ~ .job-list {
+        margin-top: 0;
+    }
+
+    .job-list {
+        @include abs.centerElement(min(90%, 1200px), 0em auto 0);
+        margin-top: -3em;
+    }
+}

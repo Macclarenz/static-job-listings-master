@@ -1,0 +1,13 @@
+@use './abstract/' as abs;
+@use './app';
+@use './components/filterTablet';
+
+// this media must be the due to specificity
+@use './media';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+

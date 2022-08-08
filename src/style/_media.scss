@@ -1,0 +1,52 @@
+@use './abstract/' as abs;
+
+@media (min-width: 1024px) {
+    body {
+        * {
+            font-size: 18px;
+        }
+    }
+
+    header {
+        background-image: url('../assets/images/bg-header-desktop.svg');
+    }
+
+    .job-list-item {
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 0;
+        padding: 2em;
+
+        &:not(:first-child) {
+            margin-top: 2em;
+        }
+
+        .job-image {
+            position: static;
+            height: 90px;
+            width: 90px;
+        }
+
+        .job-detail {
+            flex-basis: 35%;
+            margin-top: 0;
+
+            & > :not(:first-child) {
+                margin-top: 1em;
+            }
+
+            .job-position {
+                font-size: 21px;
+            }
+        }
+
+        .job-filter-list {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+            justify-content: flex-end;
+            flex-basis: 50%;
+        }
+    }
+}
